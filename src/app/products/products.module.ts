@@ -5,6 +5,7 @@ import { MyFirstDirective } from './my-first.directive';
 import { MyFirstPipe } from './my-first.pipe';
 import { FormsModule } from '@angular/forms';
 import { ProductsService } from './products.service';
+import { AutoHideDirective } from '../assignment/auto-hide.directive';
 
 
 @NgModule({
