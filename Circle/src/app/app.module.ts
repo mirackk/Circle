@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './Features/home/home.component';
 import { PostComponent } from './Features/home/post/post.component';
 import { StoryComponent } from './Features/home/story/story.component';
+import { NavigationComponent } from './Shared/navigation/navigation.component';
+import { ProfileComponent } from './Features/profile/profile.component';
+import { ProfilePostsComponent } from './Features/profile/profile-posts/profile-posts.component';
+import { ProfileLikesComponent } from './Features/profile/profile-likes/profile-likes.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +17,10 @@ import { StoryComponent } from './Features/home/story/story.component';
     HomeComponent,
     PostComponent,
     StoryComponent
+    NavigationComponent,
+    ProfileComponent,
+    ProfilePostsComponent,
+    ProfileLikesComponent
   ],
   imports: [
     BrowserModule,
