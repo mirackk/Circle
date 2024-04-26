@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './Features/home/home.component';
+import { PostComponent } from './Features/home/post/post.component';
+import { StoryComponent } from './Features/home/story/story.component';
 import { NavigationComponent } from './Shared/navigation/navigation.component';
 import { ProfileComponent } from './Features/profile/profile.component';
 import { ProfilePostsComponent } from './Features/profile/profile-posts/profile-posts.component';
@@ -12,6 +15,9 @@ import { ForgetPasswordComponent } from './Core/forget-password/forget-password.
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    PostComponent,
+    StoryComponent,
     NavigationComponent,
     ProfileComponent,
     ProfilePostsComponent,

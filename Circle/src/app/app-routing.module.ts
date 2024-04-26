@@ -6,14 +6,17 @@ import { AdminComponent } from './Features/admin/admin.component';
 import { LoginComponent } from './Core/login/login.component';
 import { RegisterComponent } from './Core/register/register.component';
 import { ForgetPasswordComponent } from './Core/forget-password/forget-password.component';
+import { HomeComponent } from './Features/home/home.component';
 
 const routes: Routes = [
-  {path:'profile',component:ProfileComponent},
-  {path:'setting',component:SettingComponent},
-  {path:'admin',component:AdminComponent},
-  {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'forgetpassword',component:ForgetPasswordComponent}
+  { path: '', redirectTo: '/home', pathMatch: 'full' },  //deafault route
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'setting', component: SettingComponent },
+//   { path: 'admin', component: AdminComponent },
+//   { path: 'login', component: LoginComponent },
+//   { path: 'register', component: RegisterComponent },
+//   { path: 'forgetpassword', component: ForgetPasswordComponent }
 ];
 
 @NgModule({
