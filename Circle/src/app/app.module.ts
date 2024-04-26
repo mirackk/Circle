@@ -16,7 +16,7 @@ import { ProfileLikesComponent } from './Features/profile/profile-likes/profile-
     AppComponent,
     HomeComponent,
     PostComponent,
-    StoryComponent
+    StoryComponent,
     NavigationComponent,
     ProfileComponent,
     ProfilePostsComponent,
