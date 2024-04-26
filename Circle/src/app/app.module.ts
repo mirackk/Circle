@@ -10,6 +10,7 @@ import { NavigationComponent } from './Shared/navigation/navigation.component';
 import { ProfileComponent } from './Features/profile/profile.component';
 import { ProfilePostsComponent } from './Features/profile/profile-posts/profile-posts.component';
 import { ProfileLikesComponent } from './Features/profile/profile-likes/profile-likes.component';
+import { ForgetPasswordComponent } from './Core/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProfileLikesComponent } from './Features/profile/profile-likes/profile-
     NavigationComponent,
     ProfileComponent,
     ProfilePostsComponent,
-    ProfileLikesComponent
+    ProfileLikesComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,
