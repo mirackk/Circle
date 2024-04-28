@@ -1,0 +1,12 @@
+<p>Stories</p>
+<div *ngIf="newsList && newsList.length">
+    <div *ngFor="let newsItem of newsList">
+      <h2>{{ newsItem.publisherName }}</h2>
+      <img *ngIf="newsItem.content.image" [src]="newsItem.content.image" alt="Image">
+      <p>{{ newsItem.content.text }}</p>
+      <p>Comments: {{ newsItem.comment.length }}</p>
+      <p>Likes: {{ newsItem.likedIdList.length }}</p>
+    </div>
+  </div>
+  
+  
