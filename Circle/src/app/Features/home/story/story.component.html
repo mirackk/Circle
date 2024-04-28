@@ -1,5 +1,4 @@
-<p>Stories</p>
-<div *ngIf="newsList && newsList.length">
+<div id="newsFeed" class="" *ngIf="newsList && newsList.length">
     <div *ngFor="let newsItem of newsList">
       <h2>{{ newsItem.publisherName }}</h2>
       <img *ngIf="newsItem.content.image" [src]="newsItem.content.image" alt="Image">
@@ -8,5 +7,3 @@
       <p>Likes: {{ newsItem.likedIdList.length }}</p>
     </div>
   </div>
-  
-  
