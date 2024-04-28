@@ -28,7 +28,7 @@ import { AdminComponent } from './Features/admin/admin.component';
     ProfileLikesComponent,
     ForgetPasswordComponent,
     AdminComponent,
-    UserListComponent
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
