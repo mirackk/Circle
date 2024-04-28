@@ -8,7 +8,7 @@ import { newsItem } from './story.model';
   styleUrls: ['./story.component.sass']
 })
 export class StoryComponent implements OnInit {
-  newsList:newsItem[]=[]; // Assuming the service returns an array
+  newsList: newsItem[] = []; // Assuming the service returns an array
 
   constructor(private newsService: NewsService) { }
 
