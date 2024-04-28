@@ -11,6 +11,7 @@ import { ProfileComponent } from './Features/profile/profile.component';
 import { ProfilePostsComponent } from './Features/profile/profile-posts/profile-posts.component';
 import { ProfileLikesComponent } from './Features/profile/profile-likes/profile-likes.component';
 import { ForgetPasswordComponent } from './Core/forget-password/forget-password.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ForgetPasswordComponent } from './Core/forget-password/forget-password.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

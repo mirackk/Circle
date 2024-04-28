@@ -1,8 +1,22 @@
-<p>navigation works!</p>
 <!-- button to navigate to pages -->
-<button routerLink="/home">Home</button>
+<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto" role="tablist">
+    <li class="nav-item">
+      <a id="home-tab" class="nav-link active" data-toggle="pill" role="tab" aria-controls="home" aria-selected="true" routerLink="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a id="profile-tab" class="nav-link" data-toggle="pill" role="tab" aria-controls="profile" aria-selected="false" routerLink="/profile">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a id="settings-tab" class="nav-link" data-toggle="pill" role="tab" aria-controls="settings" aria-selected="false" routerLink="/setting">Settings</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+<!-- <button routerLink="/home">Home</button>
 <button routerLink="/profile">Profile</button>
-<button routerLink="/setting">Settings</button>
+<button routerLink="/setting">Settings</button> -->
 <!-- <button routerLink="/admin">Admin</button>
 <button routerLink="/login">Sign up</button>
 <button routerLink="/forgetpassword">ForgetPassword</button>
