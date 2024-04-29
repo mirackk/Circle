@@ -15,7 +15,7 @@ export class StoryComponent implements OnInit {
   ngOnInit() {
     this.newsService.getNews().subscribe(data => {
       this.newsList = data;
-      console.log(this.newsList[0]["content"]);
+      //console.log(this.newsList[0]["content"]);
     });
   }
 }
