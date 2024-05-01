@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="login-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Circle</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password">
+          </mat-form-field>
+          <br>
+          <button mat-raised-button class="submit-button" color="primary" type="submit">Login</button>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <p>Create an account? <a href="/register">sign up</a></p>
+      </mat-card-actions>
+    </mat-card>
+  </div>

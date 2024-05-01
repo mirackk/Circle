@@ -1,5 +1,5 @@
 <!-- button to navigate to pages -->
-<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white ">
+<!-- <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white ">
   <hr>
   <ul class="nav nav-pills flex-column mb-auto" role="tablist">
     <li class="nav-item" role="presentation">
@@ -16,7 +16,7 @@
     </li>
   </ul>
   <hr>
-</div>
+</div> -->
 <!-- <button routerLink="/home">Home</button>
 <button routerLink="/profile">Profile</button>
 <button routerLink="/setting">Settings</button> -->
@@ -24,3 +24,15 @@
 <button routerLink="/login">Sign up</button>
 <button routerLink="/forgetpassword">ForgetPassword</button>
 <button routerLink="/register">Sign in</button> -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav opened mode="side" class="sidenav">
+    <div class="logo">
+      <img src="../../../assets/circle_logo.webp" alt="Logo">
+    </div>
+    <mat-nav-list class="navlist" >
+      <a mat-list-item routerLink="/profile">Profile</a>
+      <a mat-list-item routerLink="/home">Home</a>
+      <a mat-list-item routerLink="/admin">Admin</a>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
