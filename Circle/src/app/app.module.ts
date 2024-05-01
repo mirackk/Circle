@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserListComponent } from './Features/admin/user-list/user-list.component';
 import { AdminComponent } from './Features/admin/admin.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ProfilePostsStoryComponent } from './Features/profile/profile-posts-story/profile-posts-story.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ForgetPasswordComponent,
     AdminComponent,
     UserListComponent,
+    ProfilePostsStoryComponent,
   ],
   imports: [
     BrowserModule,

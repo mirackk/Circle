@@ -1,0 +1,12 @@
+
+<div *ngFor="let story of stories" class="story">
+    <div *ngFor="let media of story.media" class="media-thumbnail">
+      <!-- <img *ngIf="media.endsWith('.jpg')" [src]="media" alt="story image">
+      <video *ngIf="media.endsWith('.mp4')" [src]="media" controls></video> -->
+    </div>
+    <div class="actions">
+      <!-- <button (click)="onComment(story.id)">Comments ({{ story.comments }})</button>
+      <button (click)="onLike(story.id)">Likes ({{ story.likes }})</button> -->
+    </div>
+  </div>
+  
