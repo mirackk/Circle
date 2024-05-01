@@ -27,7 +27,7 @@ export class PostComponent {
   }
 
   post() {
-    return;
+    this.panelOpenState = false;
   }
 
   onChange(event: any) {
