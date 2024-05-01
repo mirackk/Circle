@@ -18,10 +18,16 @@ import { AdminComponent } from './Features/admin/admin.component';
 
 // Modules
 import { StoryModule } from './Features/home/story/story.module';
-
+import { FormsModule } from '@angular/forms';
 // Angular Material
 import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -42,8 +48,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatGridListModule,
-    StoryModule
+    StoryModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
