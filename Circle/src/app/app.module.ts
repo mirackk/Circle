@@ -27,7 +27,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { CommentsComponent } from './Features/home/story/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ForgetPasswordComponent,
     AdminComponent,
     UserListComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatFormFieldModule,
     MatButtonModule,
     MatDividerModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

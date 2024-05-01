@@ -15,7 +15,7 @@ export class PostComponent {
 
   postContent: string = '';
   panelOpenState: boolean = false;
-  files: File[]= [];
+  files: File[] = [];
   subscription?: Subscription[] = []; // Store the subscriptions in a list
 
   constructor (
@@ -33,7 +33,7 @@ export class PostComponent {
   onChange(event: any) {
     const files = event.target.files;
     if (files) {
-      this.files = files;
+      this.files = files
     }
   }
 

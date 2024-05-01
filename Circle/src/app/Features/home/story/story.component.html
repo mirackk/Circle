@@ -19,7 +19,7 @@
             <a><mat-icon svgIcon="fav-icon"></mat-icon></a>
             <span class="likeNum">{{ newsItem.likedIdList.length }}</span>
           </div>
-          <div class="chats">
+          <div class="chats" (click)="openCommentList(newsItem.comment)">
             <a><mat-icon svgIcon="chat-icon"></mat-icon></a>
             <span class="ChatNum">{{ newsItem.comment.length }}</span>
           </div>
