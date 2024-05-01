@@ -12,7 +12,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class StoryComponent implements OnInit {
   newsList: newsItem[] = []; // Assuming the service returns an array
-  // contentTmp: HTMLElement = <HTMLElement> document.getElementsByClassName('');
+  loaded: boolean = false;
 
   constructor(
     private newsService: NewsService,
@@ -25,6 +25,7 @@ export class StoryComponent implements OnInit {
 
   ngOnInit() {
     this.newsService.getNews().subscribe(data => {
+      this.loaded = true;
       // console.log(data)
       this.newsList = data;
       // console.log(this.newsList);

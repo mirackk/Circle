@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -21,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatGridListModule,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     StoryComponent
