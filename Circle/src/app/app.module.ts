@@ -18,6 +18,7 @@ import { AdminComponent } from './Features/admin/admin.component';
 
 // Modules
 import { StoryModule } from './Features/home/story/story.module';
+import { CommentsModule } from './Features/home/story/comments/comments.module';
 import { FormsModule } from '@angular/forms';
 // Angular Material
 import { MatCardModule } from '@angular/material/card';
@@ -27,8 +28,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatDialogModule } from '@angular/material/dialog';
-import { CommentsComponent } from './Features/home/story/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,6 @@ import { CommentsComponent } from './Features/home/story/comments/comments.compo
     ForgetPasswordComponent,
     AdminComponent,
     UserListComponent,
-    CommentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +56,7 @@ import { CommentsComponent } from './Features/home/story/comments/comments.compo
     MatFormFieldModule,
     MatButtonModule,
     MatDividerModule,
-    MatDialogModule,
+    CommentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

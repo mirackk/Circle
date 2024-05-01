@@ -1,8 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../../Shared/services/news.service';
 import { newsItem } from './story.model';
 import { MatDialog } from '@angular/material/dialog';
-// Child
+// child
 import { CommentsComponent } from './comments/comments.component';
 // mat SVG icon
 import { MatIconRegistry } from "@angular/material/icon";
@@ -16,7 +16,6 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class StoryComponent implements OnInit {
   newsList: newsItem[] = []; // Assuming the service returns an array
   loaded: boolean = false;
-  comments: any[] = [];
 
   constructor(
     private newsService: NewsService,
@@ -31,18 +30,15 @@ export class StoryComponent implements OnInit {
   ngOnInit() {
     this.newsService.getNews().subscribe(data => {
       this.loaded = true;
-      console.log(data)
+      // console.log(data)
       this.newsList = data;
       // console.log(this.newsList);
     });
   }
 
   openCommentList(comments: any[]) {
-    console.log(comments);
-    this.comments = comments;
-    const commentsRef = this.dialog.open(CommentsComponent);
+    const commentsRef = this.dialog.open(CommentsComponent, { data: comments });
     commentsRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }

@@ -8,13 +8,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-
+// import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
     StoryComponent,
-    DisplaynewsPipe
+    DisplaynewsPipe,
+    // CommentsComponent
   ],
   imports: [
     CommonModule,

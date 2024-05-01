@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-comments',
@@ -7,9 +7,8 @@ import { Input } from '@angular/core';
   styleUrls: ['./comments.component.sass']
 })
 export class CommentsComponent {
-  @Input() comments: any[] = [];
 
-  ngOnInit() {
-    console.log(this.comments)
-  }
+  commentPost: string = '';
+
+  constructor(@Inject(MAT_DIALOG_DATA) public commInfo: any[]) {}
 }
