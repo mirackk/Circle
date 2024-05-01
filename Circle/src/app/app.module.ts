@@ -16,12 +16,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserListComponent } from './Features/admin/user-list/user-list.component';
 import { AdminComponent } from './Features/admin/admin.component';
 
+// Modules
+import { StoryModule } from './Features/home/story/story.module';
+
+// Angular Material
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PostComponent,
-    StoryComponent,
     NavigationComponent,
     ProfileComponent,
     ProfilePostsComponent,
@@ -34,7 +40,10 @@ import { AdminComponent } from './Features/admin/admin.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatGridListModule,
+    StoryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
