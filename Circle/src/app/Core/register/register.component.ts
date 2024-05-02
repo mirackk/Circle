@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegisterService } from './register.service';
 
 @Component({
   selector: 'app-register',
@@ -9,20 +10,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   export class RegisterComponent implements OnInit {
     signUpForm!: FormGroup;
   
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(private formBuilder: FormBuilder, private registerService: RegisterService) {}
   
     ngOnInit() {
       this.signUpForm = this.formBuilder.group({
-        username: ['', [Validators.required]],
+        userName: ['', [Validators.required]],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]]
+        userEmail: ['', [Validators.required, Validators.email]]
       });
     }
   
     onSubmit() {
       if (this.signUpForm.valid) {
-        console.log(this.signUpForm.value);
+        const { confirmPassword, ...formData } = this.signUpForm.value; // not use confirmPassword
+        this.registerService.handleRegistration(formData);
+      } else {
+        console.error('Form is not valid');
+        alert('Please fill out the form correctly.');
       }
     }
   }

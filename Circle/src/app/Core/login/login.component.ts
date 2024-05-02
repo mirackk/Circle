@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,21 @@ export class LoginComponent implements OnInit {
     password: new FormControl('')
   });
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
+    const username = this.loginForm.get('username')?.value;
+    const password = this.loginForm.get('password')?.value;
+  
+    if (username && password) {
+      // make sure username and password are not empty
+      this.loginService.handleLogin(username, password);
+    } else {
+      console.error('Username or password is missing!');
+    }
   }
+  
 }
