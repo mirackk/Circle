@@ -18,8 +18,8 @@
       font-weight: 500;
       font-size: 36px;
       margin-top: 20px;
-      margin-bottom: 30px; // Space below the title
-      text-align: center; // Center-align the title
+      margin-bottom: 30px; 
+      text-align: center;
     }
 
     mat-form-field {
@@ -34,22 +34,22 @@
     button {
       background-color: #A1887F;
       width: 100%; 
-      height: 48px; // Taller button for easier click
-      font-size: 16px; // Font size that matches input fields
+      height: 48px; 
+      font-size: 16px;
     }
 
     mat-card-actions {
       display: flex;
-      justify-content: center; // Center-align the actions
-      margin-top: 20px; // Space above the actions
+      justify-content: center; 
+      margin-top: 20px;
 
       p {
-        margin: 0 10px 0 0; // Proper spacing around the paragraph
+        margin: 0 10px 0 0; 
       }
 
       a {
-        color: #1976d2; // Styling the link to look more clickable
-        text-decoration: none; // Remove underline from link
+        color: #1976d2; 
+        text-decoration: none; 
       }
     }
   }
