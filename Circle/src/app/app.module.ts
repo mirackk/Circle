@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserListComponent } from './Features/admin/user-list/user-list.component';
 import { AdminComponent } from './Features/admin/admin.component';
+import { LoginComponent } from './Core/login/login.component';
+import { RegisterComponent } from './Core/register/register.component';
 
 // Modules
 import { StoryModule } from './Features/home/story/story.module';
@@ -28,6 +30,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,12 +46,17 @@ import { MatDividerModule } from '@angular/material/divider';
     ForgetPasswordComponent,
     AdminComponent,
     UserListComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
     MatCardModule,
     StoryModule,
     MatExpansionModule,

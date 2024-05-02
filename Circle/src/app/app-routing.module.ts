@@ -13,9 +13,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'setting', component: SettingComponent },
-  { path: 'admin', component: AdminComponent }
-//   { path: 'login', component: LoginComponent },
-//   { path: 'register', component: RegisterComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 //   { path: 'forgetpassword', component: ForgetPasswordComponent }
 ];
 
