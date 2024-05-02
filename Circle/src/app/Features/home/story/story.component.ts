@@ -16,6 +16,8 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class StoryComponent implements OnInit {
   newsList: newsItem[] = []; // Assuming the service returns an array
   loaded: boolean = false;
+  likeList: newsItem[] = [];
+  colorList: any[] = [];
 
   constructor(
     private newsService: NewsService,
@@ -33,7 +35,23 @@ export class StoryComponent implements OnInit {
       // console.log(data)
       this.newsList = data;
       // console.log(this.newsList);
+      for (let i = 0; i < this.newsList.length; i++) {
+        this.colorList.push('');
+      }
     });
+  }
+
+  addToLikeList(event: Event, newsInfo: newsItem, index: number) {
+    if (this.colorList[index] === '') {
+      this.colorList[index] = 'warn';
+      newsInfo.likedIdList.length++;
+      this.likeList.push(newsInfo);
+    }
+    else {
+      this.colorList[index] = '';
+      newsInfo.likedIdList.length--;
+      this.likeList.pop();
+    }
   }
 
   openCommentList(comments: any[]) {
