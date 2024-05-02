@@ -1,0 +1,56 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #BCAAA4; 
+
+  mat-card {
+    width: 100%;
+    max-width: 400px; 
+    margin: auto; 
+    padding: 20px; 
+    background-color: #D9D9D9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+
+    mat-card-title {
+      color: #333;
+      font-weight: 500;
+      font-size: 36px;
+      margin-top: 20px;
+      margin-bottom: 30px; 
+      text-align: center;
+    }
+
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 16px;
+
+      input {
+        font-size: 16px; 
+      }
+    }
+
+    button {
+      background-color: #A1887F;
+      width: 100%; 
+      height: 48px; 
+      font-size: 16px;
+    }
+
+    mat-card-actions {
+      display: flex;
+      justify-content: center; 
+      margin-top: 20px;
+
+      p {
+        margin: 0 10px 0 0; 
+      }
+
+      a {
+        color: #1976d2; 
+        text-decoration: none; 
+      }
+    }
+  }
+}
