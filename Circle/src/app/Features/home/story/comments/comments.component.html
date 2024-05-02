@@ -1,0 +1,21 @@
+<mat-dialog-content class="mat-typography">
+  <h3 [hidden]="commInfo.length">No comments yet. Share your thoughts!</h3>
+  <ng-container *ngIf="commInfo.length">
+    <div *ngFor="let com of commInfo | displaycomments">
+      <mat-list>
+        <a><h3>{{com.publisherName}}</h3> <b>{{com.publishedTime}}</b></a>
+        <p>{{ com.content.text }}</p>
+      </mat-list>
+      <mat-divider></mat-divider>
+    </div>
+  </ng-container>
+  <mat-dialog-actions align="end">
+    <mat-form-field class="form">
+      <input class="input" matInput type="text" [(ngModel)]="commentPost">
+      <button matSuffix mat-icon-button aria-label="Clear" [hidden]="!commentPost" (click)="commentPost=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-flat-button color="primary">Submit</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

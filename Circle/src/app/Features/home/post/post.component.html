@@ -1,3 +1,42 @@
-<div id="postField" class="mx-auto text-center">
-  <h1>Post Area</h1>
+<div id="postField" class="">
+  <mat-accordion id="mat-accordion">
+    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <!-- <mat-icon id="add-box" svgIcon="add-box-icon"></mat-icon> -->
+          <h4>Post Your News Here...</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <!-- post field after expansion -->
+      <mat-form-field id="formField">
+        <input id="inputField" matInput type="text" [(ngModel)]="postContent">
+        <button matSuffix mat-icon-button aria-label="Clear" [hidden]="!postContent" (click)="postContent=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <label for="attachFile">
+        <mat-icon id="attachIcon" svgIcon="attach-icon"></mat-icon>
+      </label>
+      <input id="attachFile" type="file" multiple (change)="onChange($event)">
+      <section id="attachedList" *ngFor="let file of files">
+        File details:
+        <ul>
+          <li>Name: {{file.name}}</li>
+          <li>Type: {{file.type}}</li>
+          <li>Size: {{file.size}} bytes</li>
+        </ul>
+        <!-- <ng-container *ngIf="file.type.startsWith('image/')">
+          <img [src]="file" alt="">
+        </ng-container>
+        <ng-container *ngIf="file.type.startsWith('video/')">
+          <video>
+            <source [src]="file" type="">
+          </video>
+        </ng-container> -->
+      </section>
+      <mat-action-row>
+        <button mat-flat-button color="primary" (click)="post()">Post</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

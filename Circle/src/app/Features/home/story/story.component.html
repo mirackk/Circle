@@ -1,9 +1,30 @@
-<div id="newsFeed" class="" *ngIf="newsList && newsList.length">
-    <div *ngFor="let newsItem of newsList">
-      <h2>{{ newsItem.publisherName }}</h2>
-      <img *ngIf="newsItem.content.image" [src]="newsItem.content.image" alt="Image">
-      <p>{{ newsItem.content.text }}</p>
-      <p>Comments: {{ newsItem.comment.length }}</p>
-      <p>Likes: {{ newsItem.likedIdList.length }}</p>
+<mat-spinner [hidden]="loaded" style="width: 50px; height: 50px"></mat-spinner>
+<div id="newsFeed" class="" *ngIf="newsList && newsList.length" [hidden]="!loaded">
+    <div *ngFor="let newsItem of newsList | displaynews">
+      <mat-card class="news-card">
+        <mat-card-header>
+          <div class="avatar" mat-card-avatar>{{ newsItem.publisherName[0].toUpperCase() }}</div>
+          <mat-card-title>{{ newsItem.publisherName }}</mat-card-title>
+          <mat-card-subtitle>{{ newsItem.publishedTime }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="card-content" *ngIf="newsItem.content">
+          <p *ngIf="newsItem.content.text">{{ newsItem.content.text }}</p>
+          <img mat-card-image class="card-img" *ngIf="newsItem.content.image" [src]="newsItem.content.image" alt="">
+          <video>
+            <source *ngIf="newsItem.content.video" [src]="newsItem.content.video">
+          </video>
+        </mat-card-content>
+        <mat-card-actions class="card-actions" align="end">
+          <div class="likes">
+            <a><mat-icon svgIcon="fav-icon"></mat-icon></a>
+            <span class="likeNum">{{ newsItem.likedIdList.length }}</span>
+          </div>
+          <div class="chats" (click)="openCommentList(newsItem.comment)">
+            <a><mat-icon svgIcon="chat-icon"></mat-icon></a>
+            <span class="ChatNum">{{ newsItem.comment.length }}</span>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+      <hr>
     </div>
   </div>
