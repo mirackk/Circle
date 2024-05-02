@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserListComponent } from './Features/admin/user-list/user-list.component';
 import { AdminComponent } from './Features/admin/admin.component';
+import { ProfilePostsStoryComponent } from './Features/profile/profile-posts-story/profile-posts-story.component';
 import { LoginComponent } from './Core/login/login.component';
 import { RegisterComponent } from './Core/register/register.component';
 
@@ -33,6 +34,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ForgetPasswordComponent,
     AdminComponent,
     UserListComponent,
+    ProfilePostsStoryComponent,
     LoginComponent,
     RegisterComponent
   ],
@@ -53,6 +56,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTabsModule,
     MatSidenavModule,
     MatListModule,
     ReactiveFormsModule,
