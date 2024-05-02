@@ -56,7 +56,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatListModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     MatCardModule,
     StoryModule,
     MatExpansionModule,
