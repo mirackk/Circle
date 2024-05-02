@@ -15,13 +15,32 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserListComponent } from './Features/admin/user-list/user-list.component';
 import { AdminComponent } from './Features/admin/admin.component';
+import { ProfilePostsStoryComponent } from './Features/profile/profile-posts-story/profile-posts-story.component';
+import { LoginComponent } from './Core/login/login.component';
+import { RegisterComponent } from './Core/register/register.component';
+
+// Modules
+import { StoryModule } from './Features/home/story/story.module';
+import { CommentsModule } from './Features/home/story/comments/comments.module';
+import { FormsModule } from '@angular/forms';
+// Angular Material
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PostComponent,
-    StoryComponent,
     NavigationComponent,
     ProfileComponent,
     ProfilePostsComponent,
@@ -29,12 +48,30 @@ import { AdminComponent } from './Features/admin/admin.component';
     ForgetPasswordComponent,
     AdminComponent,
     UserListComponent,
+    ProfilePostsStoryComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    StoryModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatDividerModule,
+    CommentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
