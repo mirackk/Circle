@@ -1,0 +1,44 @@
+.user-list-container{
+  text-align: center;
+  .user-list-header{
+    .title-flex {
+      display: flex;
+      align-items: center;
+      color: black;
+      }
+  
+      .title-flex::before,
+      .title-flex::after {
+          content: '';
+          flex: 1;
+          height: 3px;
+          background: #A1887F;
+      }
+
+  }
+
+  mat-nav-list {
+    max-width: auto;
+    border-right: 1px solid #ccc;
+    height: calc(100vh - 150px);
+    overflow: auto;
+  
+    mat-list-item {
+      &:hover {
+      background-color: #d3d3d3;
+      }
+    }
+  
+    .highlight{ 
+      background-color: #d3d3d3;
+    }
+  }
+  
+  button {
+    width: 100%;
+    background-color: #A1887F;
+    height: 64px;
+    font-size: 24px;
+  }
+  
+}
