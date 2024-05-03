@@ -22,6 +22,7 @@ import { RegisterComponent } from './Core/register/register.component';
 // Modules
 import { StoryModule } from './Features/home/story/story.module';
 import { CommentsModule } from './Features/home/story/comments/comments.module';
+import { LikeListModule } from './Features/home/story/like-list/like-list.module';
 import { FormsModule } from '@angular/forms';
 // Angular Material
 import { MatCardModule } from '@angular/material/card';
@@ -72,6 +73,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     MatDividerModule,
     CommentsModule,
+    LikeListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
