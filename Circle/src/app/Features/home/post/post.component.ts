@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { NewsService } from '../../../Shared/services/news.service';
 import { HttpClient } from "@angular/common/http";
 
 // mat SVG icon
@@ -21,6 +22,7 @@ export class PostComponent {
   constructor (
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
+    private postService: NewsService,
   ) {
     this.matIconRegistry.addSvgIcon('add-box-icon', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/add_box.svg'));
     this.matIconRegistry.addSvgIcon('attach-icon', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/attach.svg'));
@@ -28,6 +30,23 @@ export class PostComponent {
 
   post() {
     this.panelOpenState = false;
+    const news: Object = {
+      publisherName: '',
+      publishedTime: Date(),
+      content: {
+          image: '',
+          video: '',
+          text: this.postContent,
+      },
+      comment: [
+      ],
+      likedIdList: [],
+    }
+    this.postContent = '';
+    // console.log(news);
+    this.postService.post(news).subscribe(data => {
+      console.log(data)
+    })
   }
 
   onChange(event: any) {
