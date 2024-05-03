@@ -4,6 +4,7 @@ import { newsItem } from './story.model';
 import { MatDialog } from '@angular/material/dialog';
 // child
 import { CommentsComponent } from './comments/comments.component';
+import { LikeListComponent } from './like-list/like-list.component';
 // mat SVG icon
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -57,6 +58,12 @@ export class StoryComponent implements OnInit {
   openCommentList(comments: any[]) {
     const commentsRef = this.dialog.open(CommentsComponent, { data: comments });
     commentsRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  openLikeList(likes: any[]) {
+    const likesRef = this.dialog.open(LikeListComponent, { data: likes });
+    likesRef.afterClosed().subscribe(result => {
     });
   }
 }

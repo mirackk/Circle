@@ -1,0 +1,19 @@
+<mat-dialog-content class="mat-typography">
+  <mat-divider></mat-divider>
+  <ng-container *ngIf="likelist.length">
+    <div *ngFor="let like of likelist | displaylikes">
+      <mat-list>
+        <a><h3>{{like.publisherName}}</h3> <b>{{like.publishedTime}}</b></a>
+        <p *ngIf="like.content" elseBlock>{{ like.content.text }}</p>
+        <p #elseBlock></p>
+        <div class="like-comment" align="end">
+          <a class="likeIcon"><mat-icon svgIcon="fav-icon"></mat-icon></a>
+          <b class="likeNum">{{ like.likedIdList.length }}</b>
+          <a><mat-icon svgIcon="chat-icon"></mat-icon></a>
+          <b class="ChatNum">{{ like.comment.length }}</b>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </div>
+  </ng-container>
+</mat-dialog-content>
