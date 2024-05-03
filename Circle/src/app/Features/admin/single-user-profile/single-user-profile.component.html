@@ -1,1 +1,17 @@
-<p>single-user-profile works!</p>
+<mat-card>
+    <mat-card-title>{{ selectedUser.userName }}</mat-card-title>
+    
+    <mat-card-content>
+      <p>Name: {{ selectedUser.name }}</p>
+      <p>Username: {{ selectedUser.userName }}</p>
+      <p>ID: {{ selectedUser._id }}</p>
+      <p>Age: {{ selectedUser.age }}</p>
+      <p>Gender: {{ selectedUser.gender }}</p>
+      <p>Phone: {{ selectedUser.phone }}</p>
+      <p>Email: {{ selectedUser.userEmail }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="saveUser()">Save</button>
+      <button mat-button color="warn" (click)="deleteUser()">Delete</button>
+    </mat-card-actions>
+  </mat-card>

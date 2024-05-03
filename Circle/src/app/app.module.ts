@@ -35,6 +35,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+import { SingleUserProfileComponent } from './Features/admin/single-user-profile/single-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ForgetPasswordComponent,
     AdminComponent,
     UserListComponent,
+    SingleUserProfileComponent,
     ProfilePostsStoryComponent,
     LoginComponent,
     RegisterComponent

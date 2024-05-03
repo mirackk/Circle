@@ -1,2 +1,15 @@
-<p>admin works!</p>
-<app-user-list></app-user-list>
+<div class="admin-container">
+    <div class="user-list">
+        <app-user-list 
+            [users]="users" 
+            [selectedUser]="selectedUser" 
+            (changeSelectedUser)='selectedUser=$event'>
+    </app-user-list>
+    </div>
+    <div class="user-profile">
+        <app-single-user-profile
+            [selectedUser]="selectedUser">
+        </app-single-user-profile>
+    </div>
+    
+</div>
