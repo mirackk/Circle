@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../../Shared/services/news.service';
 import { newsItem } from './story.model';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 // child
 import { CommentsComponent } from './comments/comments.component';
 import { LikeListComponent } from './like-list/like-list.component';
@@ -19,6 +20,7 @@ export class StoryComponent implements OnInit {
   loaded: boolean = false;
   likeList: newsItem[] = [];
   colorList: any[] = [];
+  subscriptions?: Subscription[] = [];
 
   constructor(
     private newsService: NewsService,
@@ -55,15 +57,19 @@ export class StoryComponent implements OnInit {
     }
   }
 
-  openCommentList(comments: any[]) {
-    const commentsRef = this.dialog.open(CommentsComponent, { data: comments });
-    commentsRef.afterClosed().subscribe(result => {
-    });
+  openCommentList(id: any, comments: any[]) {
+    const commentsRef = this.dialog.open(CommentsComponent, { data: { storyId: id, info: comments } });
+    this.subscriptions?.push(commentsRef.afterClosed().subscribe());
   }
 
   openLikeList(likes: any[]) {
     const likesRef = this.dialog.open(LikeListComponent, { data: likes });
-    likesRef.afterClosed().subscribe(result => {
+    this.subscriptions?.push(likesRef.afterClosed().subscribe());
+  }
+
+  ngOnDestory() {
+    this.subscriptions?.forEach((sub) => {
+      sub.unsubscribe();
     });
   }
 }

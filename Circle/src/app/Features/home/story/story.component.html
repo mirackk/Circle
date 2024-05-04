@@ -21,7 +21,7 @@
           <a class="likeIcon" (click)="addToLikeList($event, newsItem, i)"><mat-icon [color]="colorList[i]" svgIcon="fav-icon"></mat-icon></a>
           <b class="likeNum">{{ newsItem.likedIdList.length }}</b>
         </div>
-        <div class="chats" (click)="openCommentList(newsItem.comment)">
+        <div class="chats" (click)="openCommentList(newsItem._id, newsItem.comment)">
           <a><mat-icon svgIcon="chat-icon"></mat-icon></a>
           <b class="ChatNum">{{ newsItem.comment.length }}</b>
         </div>
