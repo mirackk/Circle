@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../../../Shared/services/news.service';
-import { HttpClient } from "@angular/common/http";
+import { Route } from '@angular/router';
 
 // mat SVG icon
 import { MatIconRegistry } from "@angular/material/icon";
@@ -31,22 +31,22 @@ export class PostComponent {
   post() {
     this.panelOpenState = false;
     const news: Object = {
-      publisherName: '',
-      publishedTime: Date(),
+      publisherName: 'test',
+      publishedTime: new Date().toISOString(),
       content: {
-          image: '',
-          video: '',
+          image: 'dummy.png',
+          video: 'dummy.mp4',
           text: this.postContent,
       },
-      comment: [
-      ],
+      comment: [],
       likedIdList: [],
     }
     this.postContent = '';
     // console.log(news);
     this.postService.post(news).subscribe(data => {
-      console.log(data)
+      // console.log(data)
     })
+    window.location.reload();
   }
 
   onChange(event: any) {
