@@ -19,7 +19,7 @@ export class PostComponent {
   postContent: String = '';
   panelOpenState: boolean = false;
   files: File[] = [];
-  subscription?: Subscription[] = []; // Store the subscriptions in a list
+  subscriptions?: Subscription[] = []; // Store the subscriptions in a list
   loginEmail: String = '';
   loginName: String = '';
 
@@ -60,10 +60,7 @@ export class PostComponent {
       likedIdList: [],
     }
     this.postContent = '';
-    // console.log(news);
-    this.postService.post(news).subscribe(data => {
-      // console.log(data)
-    })
+    this.subscriptions?.push(this.postService.post(news).subscribe());
     window.location.reload();
   }
 
@@ -76,7 +73,7 @@ export class PostComponent {
 
   ngOnDestory() {
     // Unsubscribing
-    this.subscription?.forEach((sub) => {
+    this.subscriptions?.forEach((sub) => {
       sub.unsubscribe();
     });
   }

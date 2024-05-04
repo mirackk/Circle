@@ -9,7 +9,7 @@ import { ForgetPasswordComponent } from './Core/forget-password/forget-password.
 import { HomeComponent } from './Features/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },  //deafault route
+  { path: '', redirectTo: '/login', pathMatch: 'full' },  //deafault route
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'setting', component: SettingComponent },

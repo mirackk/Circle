@@ -19,7 +19,7 @@ export class LoginService {
   handleLogin(username: string, password: string): void {
     this.login(username, password).subscribe({
       next: (response) => {
-        console.log('Login successful', response);
+        // console.log('Login successful', response);
         this.router.navigate(['/home']);  // when sucessful, navigate to home page
       },
       error: (error) => {
