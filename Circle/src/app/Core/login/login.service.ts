@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   private loginUrl = 'http://localhost:4231/api/login';  // api address
+  private loginEmail = '';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -25,5 +26,13 @@ export class LoginService {
         console.error('Login failed', error);
       }
     });
+  }
+
+  setEmail(data: string) {
+    this.loginEmail = data;
+  }
+
+  getEmail() {
+    return this.loginEmail;
   }
 }

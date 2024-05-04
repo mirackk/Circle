@@ -21,13 +21,15 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     const username = this.loginForm.get('username')?.value;
     const password = this.loginForm.get('password')?.value;
-  
+
     if (username && password) {
       // make sure username and password are not empty
       this.loginService.handleLogin(username, password);
+      // send login user email to post component
+      this.loginService.setEmail(username);
     } else {
       console.error('Username or password is missing!');
     }
   }
-  
+
 }
