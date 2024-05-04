@@ -11,4 +11,12 @@ export class CommentsComponent {
   commentPost: string = '';
 
   constructor(@Inject(MAT_DIALOG_DATA) public commInfo: any[]) {}
+
+  ngOnInit() {
+
+  }
+
+  onSubmit() {
+
+  }
 }
