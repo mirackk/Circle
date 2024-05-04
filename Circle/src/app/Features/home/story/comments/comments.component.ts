@@ -41,7 +41,7 @@ export class CommentsComponent {
 
   onSubmit() {
     const content = {
-      publisherName: this.loginName,
+      publisherName: this.loginName ? this.loginName : 'mirack_test',
       content: {
           image: '',
           video: '',

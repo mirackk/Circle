@@ -40,10 +40,11 @@ export class PostComponent {
     this.userService.getUserInfo().subscribe(data => {
       data.forEach((user: User) => {
         if (user.userEmail === this.loginEmail) {
-          this.loginName = user.userName;
+          this.loginName = !this.loginName ? user.userName : this.loginName;
         }
       })
     });
+    console.log(this.loginEmail)
   }
 
   post() {
