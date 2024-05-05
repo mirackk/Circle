@@ -4,6 +4,8 @@ import { CommentService } from './comment.service';
 import { LoginService } from 'src/app/Core/login/login.service';
 import { UserService } from 'src/app/Shared/services/user.service';
 import { User } from 'src/app/Features/admin/user-list/user.model';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comments',
@@ -17,11 +19,13 @@ export class CommentsComponent {
   id: any = '';
   loginEmail: String = '';
   loginName: String = '';
+  commentForm = new FormGroup({ content: new FormControl('') });
 
   constructor(
     private commentService: CommentService,
     private LoginService: LoginService,
     private userService: UserService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -40,18 +44,20 @@ export class CommentsComponent {
   }
 
   onSubmit() {
+    let contentText = this.commentForm.get('content')?.value;
     const content = {
       publisherName: this.loginName ? this.loginName : 'mirack_test',
       content: {
           image: '',
           video: '',
-          text: this.contentText,
+          text: contentText,
       }
     };
-    if (this.contentText) {
+    console.log(content)
+    if (contentText) {
       this.commentService.patch(this.id, content);
     }
-    this.contentText = '';
-    window.location.reload();
+    this.commentForm.reset();
+    // window.location.reload();
   }
 }
