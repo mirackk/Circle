@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       }],
       password: ['', {
         updateOn: 'blur', 
-        validators: [Validators.required, Validators.minLength(8)]
+        validators: [Validators.required, Validators.minLength(3)]
       }]
     });
   }

@@ -19,8 +19,22 @@ export class LoginService {
   handleLogin(email: string, password: string): void {
     this.login(email, password).subscribe({
       next: (response) => {
-        // console.log('Login successful', response);
+        console.log('Login successful', response);
         this.router.navigate(['/home']);  // when sucessful, navigate to home page
+
+        // store user info in local storage
+        // {
+        //   "name": "Mirack Test",
+        //   "userName": "mirack_test",
+        //   "userEmail": "mirack@test.com",
+        //   "userRole": "user",
+        //   "age": 30,
+        //   "gender": "Male",
+        //   "phone": 1234567890,
+        // }
+        localStorage.setItem('userName', response.userName);
+        localStorage.setItem('userEmail', response.userEmail);
+        localStorage.setItem('userRole', response.userRole);
       },
       error: (error) => {
         console.error('Login failed', error);
