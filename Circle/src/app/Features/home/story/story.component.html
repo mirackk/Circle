@@ -18,7 +18,7 @@
       </mat-card-content>
       <mat-card-actions class="card-actions" align="end">
         <div class="likes">
-          <a class="likeIcon" (click)="addToLikeList($event, newsItem, i)"><mat-icon [color]="colorList[i]" svgIcon="fav-icon"></mat-icon></a>
+          <a class="likeIcon" (click)="addToLikeList(newsItem, i)"><mat-icon [color]="colorList[i]" svgIcon="fav-icon"></mat-icon></a>
           <b class="likeNum">{{ newsItem.likedIdList.length }}</b>
         </div>
         <div class="chats" (click)="openCommentList(newsItem._id, newsItem.comment)">
@@ -31,7 +31,7 @@
   </div>
 </div>
 <div id="likelist-button">
-  <button mat-fab color="primary" (click)="openLikeList(likeList)">
+  <button mat-fab color="primary" (click)="openLikeList()">
     <mat-icon>bookmark</mat-icon>
   </button>
 </div>

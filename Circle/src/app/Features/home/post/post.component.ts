@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../../../Shared/services/news.service';
-import { LoginService } from 'src/app/Core/login/login.service';
-import { UserService } from 'src/app/Shared/services/user.service';
-import { User } from '../../admin/user-list/user.model';
 
 // mat SVG icon
 import { MatIconRegistry } from "@angular/material/icon";
@@ -20,31 +17,19 @@ export class PostComponent {
   panelOpenState: boolean = false;
   files: File[] = [];
   subscriptions?: Subscription[] = []; // Store the subscriptions in a list
-  loginEmail: String = '';
-  loginName: String = '';
+  loginName: any = '';
 
   constructor (
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private postService: NewsService,
-    private LoginService: LoginService,
-    private userService: UserService,
   ) {
     this.matIconRegistry.addSvgIcon('add-box-icon', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/add_box.svg'));
     this.matIconRegistry.addSvgIcon('attach-icon', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/attach.svg'));
   }
 
   ngOnInit() {
-    this.loginEmail = this.LoginService.getEmail();
-    // Get username by checking the binding user email
-    this.userService.getUserInfo().subscribe(data => {
-      data.forEach((user: User) => {
-        if (user.userEmail === this.loginEmail) {
-          this.loginName = !this.loginName ? user.userName : this.loginName;
-        }
-      })
-    });
-    console.log(this.loginEmail)
+    this.loginName = localStorage.getItem('userName');
   }
 
   post() {

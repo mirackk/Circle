@@ -19,13 +19,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', { 
-        updateOn: 'blur', 
-        validators: [Validators.required, Validators.email], 
-        asyncValidators: [this.emailValidator()] 
+      email: ['', {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.email],
+        asyncValidators: [this.emailValidator()]
       }],
       password: ['', {
-        updateOn: 'blur', 
+        updateOn: 'blur',
         validators: [Validators.required, Validators.minLength(3)]
       }]
     });
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         );
     };
   }
-  
+
 
   onSubmit(): void {
     const email = this.loginForm.get('email')?.value;
@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
 
     if (email && password) {
       this.loginService.handleLogin(email, password);
-      this.loginService.setEmail(email);
 
     } else {
       console.error('Email or password is missing!');

@@ -41,12 +41,4 @@ export class LoginService {
       }
     });
   }
-
-  setEmail(data: string) {
-    this.loginEmail = data;
-  }
-
-  getEmail() {
-    return this.loginEmail;
-  }
 }

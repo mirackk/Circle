@@ -18,7 +18,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class StoryComponent implements OnInit {
   newsList: newsItem[] = []; // Assuming the service returns an array
   loaded: boolean = false;
-  likeList: newsItem[] = [];
+  likeList: any = [];
   colorList: any[] = [];
   subscriptions?: Subscription[] = [];
 
@@ -33,27 +33,44 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.likeList = localStorage.getItem('likeList') ? JSON.parse(localStorage.likeList) : [];
+    console.log(this.likeList)
     this.newsService.getNews().subscribe(data => {
       this.loaded = true;
       // console.log(data)
       this.newsList = data;
       // console.log(this.newsList);
+      // setting the like status color of each like button
       for (let i = 0; i < this.newsList.length; i++) {
-        this.colorList.push('');
+        let isInList = false;
+        this.likeList.forEach((news: any) => {
+          if (news._id === this.newsList[i]._id) {
+            isInList = true;
+          }
+        })
+        if (isInList) {
+          this.colorList.push('warn');
+          this.newsList[i].likedIdList.length++;
+        }
+        else {
+          this.colorList.push('');
+        }
       }
     });
   }
 
-  addToLikeList(event: Event, newsInfo: newsItem, index: number) {
+  addToLikeList(newsInfo: newsItem, index: number) {
     if (this.colorList[index] === '') {
       this.colorList[index] = 'warn';
       newsInfo.likedIdList.length++;
       this.likeList.push(newsInfo);
+      localStorage.setItem('likeList', JSON.stringify(this.likeList));
     }
     else {
       this.colorList[index] = '';
       newsInfo.likedIdList.length--;
       this.likeList.pop();
+      localStorage.setItem('likeList', JSON.stringify(this.likeList));
     }
   }
 
@@ -62,8 +79,8 @@ export class StoryComponent implements OnInit {
     this.subscriptions?.push(commentsRef.afterClosed().subscribe());
   }
 
-  openLikeList(likes: any[]) {
-    const likesRef = this.dialog.open(LikeListComponent, { data: likes });
+  openLikeList() {
+    const likesRef = this.dialog.open(LikeListComponent, { data: this.likeList });
     this.subscriptions?.push(likesRef.afterClosed().subscribe());
   }
 
