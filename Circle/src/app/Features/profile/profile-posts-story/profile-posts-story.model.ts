@@ -1,9 +1,25 @@
-// src/app/features/home/story/story.model.ts
-
-export interface Story {
-    id: number;
-    media: string[]; // 假设这是图片或视频的 URL 数组
-    likes: number;
-    comments: number;
-  }
-  
+export interface newsItem {
+  _id: string;
+  publisherName: string;
+  publishedTime: string;
+  content: {
+    image?: string;
+    video?: string;
+    text: string;
+    _id: string;
+  };
+  comment: Array<{
+    content: {
+      text: string;
+      _id: string;
+    },
+    _id: string,
+    publishedTime: string,
+    publisherName?: string
+  }>;
+  likedIdList: Array<{
+    userId: string;
+    _id: string;
+  }>;
+  __v: number;
+}

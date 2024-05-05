@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Story } from './profile-posts-story.model';
+import { NewsService } from '../../../Shared/services/news.service';
+import { newsItem } from './profile-posts-story.model';
+import { MatIconRegistry } from "@angular/material/icon";
 
 @Component({
   selector: 'app-profile-posts-story',
@@ -7,29 +9,29 @@ import {Story } from './profile-posts-story.model';
   styleUrls: ['./profile-posts-story.component.sass']
 })
 export class ProfilePostsStoryComponent implements OnInit{
-  stories: Story[] = [
-    {
-      id: 1,
-      media: [
-        'url-to-image-or-video-1.jpg',
-        'url-to-image-or-video-2.jpg'
-      ],
-      likes: 10,
-      comments: 5
-    },
-    {
-      id: 2,
-      media: [
-        'url-to-image-or-video-1.jpg',
-        'url-to-image-or-video-2.jpg'
-      ],
-      likes: 20,
-      comments: 8
-    }
-  ];
+  newsList: newsItem[] = []; // Assuming the service returns an array
+  userNewsList: newsItem[] = []; // 存储当前用户的新闻
 
-  constructor() { }
+  constructor(
+    private newsService: NewsService,
+    private matIconRegistry: MatIconRegistry,
+    ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // const currentUser = localStorage.getItem('userName'); // get current user
+    // below is for testing
+    const currentUser = "locluu1";
+    
+    // get all news list
+    this.newsService.getNews().subscribe(data => {
+      this.newsList = data;
+      // console.log(this.newsList);
+      // filter news list by current user
+      if (currentUser) {
+        this.userNewsList = this.newsList.filter(news => news.publisherName === currentUser);
+        //console.log("User-specific News:", this.userNewsList);
+      }
+    });
   }
+
 }
