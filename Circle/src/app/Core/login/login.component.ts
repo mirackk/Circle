@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { LoginService } from './login.service';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +11,48 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl('')
   });
 
-  constructor(private loginService: LoginService) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', { 
+        updateOn: 'blur', 
+        validators: [Validators.required, Validators.email], 
+        asyncValidators: [this.emailValidator()] 
+      }],
+      password: ['', {
+        updateOn: 'blur', 
+        validators: [Validators.required, Validators.minLength(8)]
+      }]
+    });
   }
 
+  private emailValidator(): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+      return this.http.get<{exists: boolean}>(`http://localhost:4231/api/register/checkExistByEmail/${control.value}`)
+        .pipe(
+          map(result => {
+            return result ? null : { emailNotExisted: true } ;
+          })
+        );
+    };
+  }
+  
+
   onSubmit(): void {
-    const username = this.loginForm.get('username')?.value;
+    const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
 
-    if (username && password) {
-      // make sure username and password are not empty
-      this.loginService.handleLogin(username, password);
-      // send login user email to post component
-      this.loginService.setEmail(username);
+    if (email && password) {
+      this.loginService.handleLogin(email, password);
+      this.loginService.setEmail(email);
+
     } else {
-      console.error('Username or password is missing!');
+      console.error('Email or password is missing!');
     }
   }
 

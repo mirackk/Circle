@@ -12,12 +12,12 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post(this.loginUrl, { userEmail: username, password: password });
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(this.loginUrl, { userEmail: email, password: password });
   }
 
-  handleLogin(username: string, password: string): void {
-    this.login(username, password).subscribe({
+  handleLogin(email: string, password: string): void {
+    this.login(email, password).subscribe({
       next: (response) => {
         // console.log('Login successful', response);
         this.router.navigate(['/home']);  // when sucessful, navigate to home page

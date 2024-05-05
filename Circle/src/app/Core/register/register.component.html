@@ -6,20 +6,32 @@
           <mat-form-field appearance="fill">
             <mat-label>Username</mat-label>
             <input matInput formControlName="userName">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Confirm Password</mat-label>
-            <input matInput type="password" formControlName="confirmPassword">
+            <mat-error *ngIf="signUpForm.get('userName')?.errors?.usernameExists">
+              Username already exists.
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
             <input matInput formControlName="userEmail">
+            <mat-error *ngIf="signUpForm.get('userEmail')?.errors?.emailExists">
+              Email already in use.
+            </mat-error>
           </mat-form-field>
-          <button mat-raised-button color="primary" type="submit">Sign up</button>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="signUpForm.get('password')?.errors?.passwordStrength">
+            At least 8 characters, including uppercase, lowercase, and special characters.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword">
+            <mat-error *ngIf="signUpForm.errors?.passwordMismatch">
+              Passwords do not match.
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!signUpForm.valid" color="primary" type="submit">Sign up</button>
         </form>
       </mat-card-content>
       <mat-card-actions>
