@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DisplaycommentsPipe } from './displaycomments.pipe';
 import { CommentsComponent } from './comments.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Angular Material
 import { MatDialogModule } from '@angular/material/dialog';
@@ -30,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommentsComponent

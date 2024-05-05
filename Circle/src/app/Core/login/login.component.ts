@@ -49,9 +49,11 @@ export class LoginComponent implements OnInit {
 
     if (email && password) {
       this.loginService.handleLogin(email, password);
+      this.loginService.setEmail(email);
+
     } else {
       console.error('Email or password is missing!');
     }
   }
-  
+
 }
