@@ -38,6 +38,7 @@ export class LoginService {
       },
       error: (error) => {
         console.error('Login failed', error);
+        alert("Login failed: " + error.error);
       }
     });
   }
