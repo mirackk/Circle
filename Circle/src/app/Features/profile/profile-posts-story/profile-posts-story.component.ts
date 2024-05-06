@@ -18,10 +18,10 @@ export class ProfilePostsStoryComponent implements OnInit{
     ) { }
 
   ngOnInit() {
-    // const currentUser = localStorage.getItem('userName'); // get current user
+    const currentUser = localStorage.getItem('userName'); // get current user
     // below is for testing
-    const currentUser = "locluu1";
-    
+    // const currentUser = "locluu1";
+
     // get all news list
     this.newsService.getNews().subscribe(data => {
       this.newsList = data;
