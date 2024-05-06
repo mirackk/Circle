@@ -34,12 +34,9 @@ export class StoryComponent implements OnInit {
 
   ngOnInit() {
     this.likeList = localStorage.getItem('likeList') ? JSON.parse(localStorage.likeList) : [];
-    console.log(this.likeList)
     this.newsService.getNews().subscribe(data => {
       this.loaded = true;
-      // console.log(data)
       this.newsList = data;
-      // console.log(this.newsList);
       // setting the like status color of each like button
       for (let i = 0; i < this.newsList.length; i++) {
         let isInList = false;

@@ -18,6 +18,7 @@ export class PostComponent {
   files: File[] = [];
   subscriptions?: Subscription[] = []; // Store the subscriptions in a list
   loginName: any = '';
+  postList: any = [];
 
   constructor (
     private matIconRegistry: MatIconRegistry,
@@ -30,6 +31,7 @@ export class PostComponent {
 
   ngOnInit() {
     this.loginName = localStorage.getItem('userName');
+    this.postList = localStorage.getItem('postList') ? JSON.parse(localStorage.postList) : [];
   }
 
   post() {
@@ -46,7 +48,11 @@ export class PostComponent {
       likedIdList: [],
     }
     this.postContent = '';
-    this.subscriptions?.push(this.postService.post(news).subscribe());
+    this.subscriptions?.push(this.postService.post(news).subscribe(data => {
+      // add new post to local storage for profile page
+      this.postList.push(data);
+      localStorage.setItem('postList', JSON.stringify(this.postList));
+    }));
     window.location.reload();
   }
 

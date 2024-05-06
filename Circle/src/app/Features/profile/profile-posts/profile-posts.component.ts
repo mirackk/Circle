@@ -13,4 +13,8 @@ export class ProfilePostsComponent {
     this.userName = localStorage.getItem('userName') || 'N/A'; // if not found, set to 'N/A'
     this.userEmail = localStorage.getItem('userEmail') || 'N/A';
   }
+
+  ngOnInit() {
+    console.log(JSON.parse(localStorage.postList));
+  }
 }
