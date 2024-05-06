@@ -5,11 +5,11 @@
         <div class="avatar" mat-card-avatar>
           <!-- <h2>{{ newsItem.publisherName[0].toUpperCase() }}</h2> -->
         </div>
-        <mat-card-title>{{ newsItem.publisherName }}</mat-card-title>
+        <mat-card-title class="text">{{ newsItem.publisherName }}</mat-card-title>
         <mat-card-subtitle>{{ newsItem.publishedTime }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content class="card-content" *ngIf="newsItem.content">
-        <p *ngIf="newsItem.content.text">{{ newsItem.content.text }}</p>
+        <p *ngIf="newsItem.content.text" class = "text">{{ newsItem.content.text }}</p>
         <img mat-card-image class="card-img" *ngIf="newsItem.content.image" [src]="newsItem.content.image" alt="">
         <video>
           <source *ngIf="newsItem.content.video" [src]="newsItem.content.video">
