@@ -2,6 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommentService } from './comment.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { commentData } from '../story.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-comments',
@@ -12,9 +14,10 @@ export class CommentsComponent {
 
   contentText: string = '';
   commInfo: any[] = [];
-  id: any = '';
-  loginName: any = '';
+  id: string = '';
+  loginName: string = '';
   commentForm = new FormGroup({ content: new FormControl('') });
+  subscriptions?: Subscription[] = []; // Store the subscriptions in a list
 
   constructor(
     private commentService: CommentService,
@@ -24,24 +27,33 @@ export class CommentsComponent {
   ngOnInit() {
     this.id = this.data.storyId;
     this.commInfo = this.data.info;
-    this.loginName = localStorage.getItem('userName');
+    this.loginName = localStorage.userName;
   }
 
   onSubmit() {
     let contentText = this.commentForm.get('content')?.value;
-    const content = {
-      publisherName: this.loginName,
-      content: {
-          image: '',
-          video: '',
-          text: contentText,
-      }
-    };
-    console.log(content)
+    // console.log(content)
     if (contentText) {
-      this.commentService.patch(this.id, content);
+      const content: commentData = {
+        publisherName: this.loginName,
+        content: {
+            image: '',
+            video: '',
+            text: contentText,
+        }
+      };
+      this.subscriptions?.push(this.commentService.patch(this.id, content).subscribe((data: any) => {
+        this.commInfo.push(data);
+        // console.log(data);
+      }));
     }
     this.commentForm.reset();
-    window.location.reload();
+  }
+
+  ngOnDestory() {
+    // Unsubscribing
+    this.subscriptions?.forEach((sub) => {
+      sub.unsubscribe();
+    });
   }
 }

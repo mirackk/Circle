@@ -1,6 +1,7 @@
+import { NewsService } from './../../../Shared/services/news.service';
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NewsService } from '../../../Shared/services/news.service';
+import { newsItem, postData } from '../story/story.model';
 
 // mat SVG icon
 import { MatIconRegistry } from "@angular/material/icon";
@@ -13,7 +14,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class PostComponent {
 
-  postContent: String = '';
+  postContent: string = '';
   panelOpenState: boolean = false;
   files: File[] = [];
   subscriptions?: Subscription[] = []; // Store the subscriptions in a list
@@ -36,7 +37,7 @@ export class PostComponent {
 
   post() {
     this.panelOpenState = false;
-    const news: Object = {
+    const news: postData = {
       publisherName: this.loginName,
       publishedTime: new Date().toISOString(),
       content: {
@@ -50,10 +51,14 @@ export class PostComponent {
     this.postContent = '';
     this.subscriptions?.push(this.postService.post(news).subscribe(data => {
       // add new post to local storage for profile page
+      // console.log(data)
+      const postNews = Object(data);
+      // console.log(postNews)
+      this.postService.updateNews(postNews);
       this.postList.push(data);
       localStorage.setItem('postList', JSON.stringify(this.postList));
     }));
-    window.location.reload();
+    // window.location.reload();
   }
 
   onChange(event: any) {
