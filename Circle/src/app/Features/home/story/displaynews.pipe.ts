@@ -7,8 +7,6 @@ import { newsItem } from './story.model';
 export class DisplaynewsPipe implements PipeTransform {
 
   transform(value: newsItem[]): newsItem[] {
-    const newList: newsItem[] = [];
-
     for (let news of value) {
       const date = new Date(news.publishedTime).toLocaleDateString('en-US');
       const time = new Date(news.publishedTime).toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" });

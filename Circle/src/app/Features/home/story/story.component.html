@@ -1,6 +1,6 @@
 <mat-spinner id="spinner" *ngIf="!loaded" style="width: 50px; height: 50px"></mat-spinner>
 <div id="newsFeed" class="" *ngIf="newsList && newsList.length">
-  <div *ngFor="let newsItem of newsList | displaynews;; let i = index">
+  <div *ngFor="let newsItem of newsList.reverse() | displaynews; let i = index">
     <mat-card class="news-card">
       <mat-card-header>
         <div class="avatar" mat-card-avatar>

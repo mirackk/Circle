@@ -32,7 +32,7 @@ export class PostComponent {
 
   ngOnInit() {
     this.loginName = localStorage.getItem('userName');
-    this.postList = localStorage.getItem('postList') ? JSON.parse(localStorage.postList) : [];
+    // this.postList = localStorage.getItem('postList') ? JSON.parse(localStorage.postList) : [];
   }
 
   post() {
@@ -58,8 +58,8 @@ export class PostComponent {
       // console.log(postNews)
       this.postService.updateNews(postNews);
       // add new post to local storage for profile page
-      this.postList.push(data);
-      localStorage.setItem('postList', JSON.stringify(this.postList));
+      // this.postList.push(data);
+      // localStorage.setItem('postList', JSON.stringify(this.postList));
     }));
     // window.location.reload();
   }
