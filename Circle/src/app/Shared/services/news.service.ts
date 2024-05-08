@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { newsItem, postData } from 'src/app/Features/home/story/story.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 export class NewsService {
 
   private apiUrl = 'http://localhost:4231/api/news';
+  private newsList: newsItem[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +17,15 @@ export class NewsService {
     return this.http.get<any>(this.apiUrl);
   }
 
-  post(data: any) {
+  post(data: postData) {
     return this.http.post(this.apiUrl, data);
+  }
+
+  setNews(data: newsItem[]) {
+    this.newsList = data;
+  }
+
+  updateNews(data: newsItem) {
+    this.newsList.push(data);
   }
 }

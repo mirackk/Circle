@@ -37,6 +37,8 @@ export class StoryComponent implements OnInit {
     this.newsService.getNews().subscribe(data => {
       this.loaded = true;
       this.newsList = data;
+      // save the news for later post update
+      this.newsService.setNews(this.newsList);
       // setting the like status color of each like button
       for (let i = 0; i < this.newsList.length; i++) {
         let isInList = false;
@@ -56,6 +58,10 @@ export class StoryComponent implements OnInit {
     });
   }
 
+  ngOnchanges() {
+
+  }
+
   addToLikeList(newsInfo: newsItem, index: number) {
     if (this.colorList[index] === '') {
       this.colorList[index] = 'warn';
@@ -71,7 +77,7 @@ export class StoryComponent implements OnInit {
     }
   }
 
-  openCommentList(id: any, comments: any[]) {
+  openCommentList(id: string, comments: any[]) {
     const commentsRef = this.dialog.open(CommentsComponent, { data: { storyId: id, info: comments } });
     this.subscriptions?.push(commentsRef.afterClosed().subscribe());
   }
