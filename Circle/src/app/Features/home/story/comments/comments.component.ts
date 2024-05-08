@@ -43,6 +43,9 @@ export class CommentsComponent {
         }
       };
       this.subscriptions?.push(this.commentService.patch(this.id, content).subscribe((data: any) => {
+      const date = new Date(data.publishedTime).toLocaleDateString('en-US');
+      const time = new Date(data.publishedTime).toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" });
+      data.publishedTime = time + ' ' + date;
         this.commInfo.push(data);
         // console.log(data);
       }));

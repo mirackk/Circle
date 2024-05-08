@@ -50,11 +50,14 @@ export class PostComponent {
     }
     this.postContent = '';
     this.subscriptions?.push(this.postService.post(news).subscribe(data => {
-      // add new post to local storage for profile page
       // console.log(data)
       const postNews = Object(data);
+      const date = new Date(postNews.publishedTime).toLocaleDateString('en-US');
+      const time = new Date(postNews.publishedTime).toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" });
+      postNews.publishedTime = time + ' ' + date;
       // console.log(postNews)
       this.postService.updateNews(postNews);
+      // add new post to local storage for profile page
       this.postList.push(data);
       localStorage.setItem('postList', JSON.stringify(this.postList));
     }));
