@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # 暴露端口
-EXPOSE 4200
+EXPOSE 4300
 
 # 启动应用
 CMD ["npx", "ng", "serve", "--host", "0.0.0.0"]
