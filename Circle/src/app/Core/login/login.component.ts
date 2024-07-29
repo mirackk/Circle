@@ -10,7 +10,10 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  protected mytest = 'test';
+
   loginForm = new FormGroup({
+    name: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl('')
   });
@@ -19,6 +22,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
+      name: ['', {
+        updateOn: 'blur',
+        validators: [Validators.required,],
+      }],
       email: ['', {
         updateOn: 'blur',
         validators: [Validators.required, Validators.email],
@@ -44,12 +51,16 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit(): void {
+    const name = this.loginForm.get('name')?.value;
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
 
-    if (email && password) {
-      this.loginService.handleLogin(email, password);
-
+    if (password) {
+      if (name !== null && name !== undefined) {
+        this.loginService.handleLogin(name, password);
+      } else {
+        console.error('Name is missing!');
+      }
     } else {
       console.error('Email or password is missing!');
     }

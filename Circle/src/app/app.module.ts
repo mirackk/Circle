@@ -37,6 +37,8 @@ import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SingleUserProfileComponent } from './Features/admin/single-user-profile/single-user-profile.component';
+// web vitals
+import { WebVitalsService } from './web-vitals.service';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,7 @@ import { SingleUserProfileComponent } from './Features/admin/single-user-profile
     CommentsModule,
     LikeListModule,
   ],
-  providers: [],
+  providers: [WebVitalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

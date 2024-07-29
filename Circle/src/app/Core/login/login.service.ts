@@ -7,17 +7,18 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  private loginUrl = 'http://localhost:4231/api/login';  // api address
+  private loginUrl = 'http://localhost:3000/login';  // api address
   private loginEmail = '';
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(this.loginUrl, { userEmail: email, password: password });
+  login(name: string, password: string): Observable<any> {
+    return this.http.post(this.loginUrl, { username:name, password: password });
   }
 
-  handleLogin(email: string, password: string): void {
-    this.login(email, password).subscribe({
+  handleLogin(name:string, password: string): void {
+    console.log('name', name, 'password', password);
+    this.login(name, password).subscribe({
       next: (response) => {
         console.log('Login successful', response);
         this.router.navigate(['/home']);  // when sucessful, navigate to home page
@@ -32,11 +33,14 @@ export class LoginService {
         //   "gender": "Male",
         //   "phone": 1234567890,
         // }
-        localStorage.setItem('userName', response.userName);
-        localStorage.setItem('userEmail', response.userEmail);
-        localStorage.setItem('userRole', response.userRole);
+        console.log('response', response);
+        localStorage.setItem('accessToken', response.accessToken);
+        // localStorage.setItem('userName', response.userName);
+        // localStorage.setItem('userEmail', response.userEmail);
+        // localStorage.setItem('userRole', response.userRole);
       },
       error: (error) => {
+        console.error('test', error);
         console.error('Login failed', error);
       }
     });
